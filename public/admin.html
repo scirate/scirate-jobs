@@ -1,0 +1,20 @@
+<h1>Admin page</h1>
+
+<div id="admin">
+</div>
+<script src="build/Admin.js"></script>
+
+<script type="text/javascript">
+  const initData = 
+    { "queryString": document.location.href
+    , "jwtToken": "eyJhbGciOiJIUzI1NiJ9.eyJhZG1pbiI6ZmFsc2UsImV4cCI6MTYyMjc1Nzg0OSwiaHR0cHM6Ly9oYXN1cmEuaW8vand0L2NsYWltcyI6eyJ4LWhhc3VyYS1hbGxvd2VkLXJvbGVzIjpbInB1YmxpYyJdLCJ4LWhhc3VyYS1kZWZhdWx0LXJvbGUiOiJwdWJsaWMifX0.Tsn4NLh2KcYH2GIpODHin8xW6PBbSlSfn5EJD7Xt7W8"
+    , "graphqlUrl": "http://localhost:8080/v1/graphql"
+    };
+
+  console.log(initData);
+
+  Elm.SciRate.Views.Admin.init(
+    { node: document.getElementById("job-sidebar") 
+    , flags: initData
+    });
+</script>

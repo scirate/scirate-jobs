@@ -1,0 +1,3 @@
+# This file is required by the 'hasura' cli tool; but it
+# doesn't actually require anything inside it; all the
+# values are configured via the environment variables!

@@ -1,0 +1,18 @@
+<h1>Submit</h1>
+
+<div id="jobs">
+</div>
+<script src="build/SubmitOrEdit.js"></script>
+
+<script type="text/javascript">
+  const initData = 
+    { "queryString": document.location.href
+    , "jwtToken": "eyJhbGciOiJIUzI1NiJ9.eyJhZG1pbiI6ZmFsc2UsImV4cCI6MTYyMzIyNDcwMiwiaHR0cHM6Ly9oYXN1cmEuaW8vand0L2NsYWltcyI6eyJ4LWhhc3VyYS1hbGxvd2VkLXJvbGVzIjpbImVkaXRvciJdLCJ4LWhhc3VyYS1kZWZhdWx0LXJvbGUiOiJlZGl0b3IiLCJ4LWhhc3VyYS1qb2ItdG9rZW4iOiIifX0.YhXfJrYL6pFsvaasu9lLnmQDmAGpDgedDAmJb3Cy_NE"
+    , "graphqlUrl": "http://localhost:8080/v1/graphql"
+    };
+
+  Elm.SciRate.Views.SubmitOrEdit.init(
+    { node: document.getElementById("jobs") 
+    , flags: initData
+    });
+</script>

@@ -1,0 +1,151 @@
+version: 3
+sources:
+- name: default
+  kind: postgres
+  tables:
+  - table:
+      schema: public
+      name: jobPostings
+    object_relationships:
+    - name: job
+      using:
+        foreign_key_constraint_on: jobId
+    select_permissions:
+    - role: public
+      permission:
+        columns:
+        - active
+        - endDate
+        - jobId
+        - startDate
+        filter:
+          active:
+            _eq: true
+  - table:
+      schema: public
+      name: jobs
+    array_relationships:
+    - name: jobPostings
+      using:
+        foreign_key_constraint_on:
+          column: jobId
+          table:
+            schema: public
+            name: jobPostings
+    insert_permissions:
+    - role: editor
+      permission:
+        check: {}
+        columns:
+        - academic
+        - approved
+        - closingDate
+        - contactEmail
+        - contactName
+        - jobTitle
+        - jobUrl
+        - location
+        - modified
+        - organisationName
+        - organisationUrl
+        - remote
+        - tags
+        - withdrawn
+        backend_only: false
+    select_permissions:
+    - role: editor
+      permission:
+        columns:
+        - academic
+        - approved
+        - closingDate
+        - contactEmail
+        - contactName
+        - created
+        - id
+        - jobTitle
+        - jobUrl
+        - location
+        - modified
+        - organisationName
+        - organisationUrl
+        - remote
+        - tags
+        - token
+        - withdrawn
+        filter:
+          token:
+            _eq: x-hasura-job-token
+    - role: public
+      permission:
+        columns:
+        - academic
+        - approved
+        - closingDate
+        - contactEmail
+        - contactName
+        - created
+        - id
+        - jobTitle
+        - jobUrl
+        - location
+        - modified
+        - organisationName
+        - organisationUrl
+        - remote
+        - tags
+        - token
+        - withdrawn
+        filter:
+          token:
+            _eq: x-hasura-job-token
+    - role: ruby
+      permission:
+        columns:
+        - contactEmail
+        - contactName
+        - emailedConfirmation
+        - id
+        filter: {}
+    update_permissions:
+    - role: editor
+      permission:
+        columns:
+        - approved
+        - closingDate
+        - contactEmail
+        - contactName
+        - jobTitle
+        - jobUrl
+        - location
+        - modified
+        - organisationName
+        - organisationUrl
+        - remote
+        - tags
+        - withdrawn
+        filter:
+          token:
+            _eq: x-hasura-job-token
+        check:
+          approved:
+            _eq: false
+    - role: ruby
+      permission:
+        columns:
+        - emailedConfirmation
+        filter:
+          token:
+            _eq: x-hasura-job-token
+        check: null
+  configuration:
+    connection_info:
+      use_prepared_statements: true
+      database_url:
+        from_env: HASURA_GRAPHQL_DATABASE_URL
+      isolation_level: read-committed
+      pool_settings:
+        connection_lifetime: 600
+        retries: 1
+        idle_timeout: 180
+        max_connections: 50

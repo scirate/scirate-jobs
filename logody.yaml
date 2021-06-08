@@ -1,0 +1,6 @@
+---
+docker:
+  shell: "docker-compose up"
+
+elm:
+  shell: "nix-shell --command 'elm reactor --port 8001'"
