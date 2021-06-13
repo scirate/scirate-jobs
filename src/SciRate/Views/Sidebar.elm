@@ -161,7 +161,10 @@ update msg model =
           ( model, cmd )
 
 view : Model -> Html Msg
-view model = jobSidebar model.jobs
+view model = 
+  if List.length model.jobs > 0
+  then jobSidebar model.jobs
+  else div [] []
 
 jobSidebar : List JobItem -> Html Msg
 jobSidebar jobs = 

@@ -96,9 +96,7 @@ sources:
         - tags
         - token
         - withdrawn
-        filter:
-          token:
-            _eq: x-hasura-job-token
+        filter: {}
     - role: ruby
       permission:
         columns:
@@ -106,6 +104,7 @@ sources:
         - contactName
         - emailedConfirmation
         - id
+        - token
         filter: {}
     update_permissions:
     - role: editor
