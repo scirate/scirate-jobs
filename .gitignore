@@ -9,3 +9,4 @@ repl-temp-*
 node_modules/
 build/
 public/build/
+mock-data/

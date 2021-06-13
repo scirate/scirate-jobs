@@ -4,7 +4,7 @@ import Browser
 import Dict                  exposing (Dict)
 import Set                   exposing (Set)
 import Url                   exposing (Url)
-import Html                  exposing ( Html, a, div, h3, h4, p, span, text
+import Html                  exposing ( Html, a, div, h2, p, span, text
                                       , hr, input, small, label, select, option
                                       , button
                                       )
@@ -189,7 +189,7 @@ update msg model =
 view : Model -> Html Msg
 view model = 
     div [ class "job-list" ]
-        [ h4 [ ] [ text "Filter jobs" ]
+        [ h2 [ ] [ text "Filter jobs" ]
         , div [ class "filters" ]
               -- Job Title contains ...
               [ div [ class "filter" ]
@@ -224,7 +224,7 @@ view model =
         , div [ class "reset" ]
               [ button [ class "reset", onClick ResetFilters ] [ text "Reset" ]
               ]
-        , h4 [ ] [ text "Results" ]
+        , h2 [ class "results" ] [ text "Results" ]
         , renderJobs model.visibleJobs
         ]
 
@@ -238,7 +238,9 @@ tagFilter model =
                          [ a [ href "#", onClick (ToggleTag t) ] [ text t ]
                          ]
   in
-      div [ class "tag-filter" ] <| List.map renderTag model.allTags
+      div [ class "tag-filter" ]
+        <| List.intersperse (text " ")
+        <| List.map renderTag model.allTags
 
 dropdownFilter : Maybe String -> (String -> Msg) -> String -> List String -> Html Msg
 dropdownFilter presentValue msg name_ items =
