@@ -126,9 +126,9 @@ update msg model =
             newModel = case r of
               Ok jd -> 
                 let jobs      = List.map .job jd.data.jobPostings
-                    companies = unique <| List.map .organisationName jobs
-                    locations = unique <| List.map .location jobs
-                    allTags   = unique << List.concat <| List.map .tags jobs
+                    companies = List.sort <| unique <| List.map .organisationName jobs
+                    locations = List.sort <| unique <| List.map .location jobs
+                    allTags   = List.sort <| unique << List.concat <| List.map .tags jobs
                  in { model | allJobs      = jobs
                             , allCompanies = companies
                             , allLocations = locations
