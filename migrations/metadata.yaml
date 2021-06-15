@@ -45,7 +45,6 @@ sources:
         - jobTitle
         - jobUrl
         - location
-        - modified
         - organisationName
         - organisationUrl
         - remote
@@ -129,6 +128,8 @@ sources:
         check:
           approved:
             _eq: false
+        set:
+          modified: x-hasura-job-date-modified
     - role: ruby
       permission:
         columns:
