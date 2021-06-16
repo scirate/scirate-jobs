@@ -15,6 +15,17 @@ tools (installed outside of nix):
 - [logody](https://github.com/sordina/logody)
 - [docker](https://www.docker.com/get-started) and [docker-compose](https://docs.docker.com/compose/install/)
 
+### Docker-compose note
+
+In order to use the `docker-compose` command, you'll need to decide if you
+want a host-provided database (on your computer) or a docker-provided one. If
+in doubt, use the docker-provided one, so just symlink that as your main
+compose file:
+
+```
+ln -s docker-compose-docker-postgres.yaml docker-compose.yaml
+```
+
 
 ### Env vars
 
