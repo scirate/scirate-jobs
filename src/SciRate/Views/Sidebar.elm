@@ -2,7 +2,7 @@ module SciRate.Views.Sidebar exposing (..)
 
 import Browser
 import Html                  exposing (Html, a, div , h3 , p, span, text, hr , small)
-import Html.Attributes       exposing (class, href, title)
+import Html.Attributes       exposing (class, href, title, target)
 import Http
 import Json.Decode           as Decode exposing (Decoder, bool, string, list)
 import Json.Decode.Pipeline  exposing (required)
@@ -192,9 +192,9 @@ renderJob : JobItem -> Html msg
 renderJob job =
   div [ class "job" ]
       [ div [ class "title" ] 
-            [ a [ href job.jobUrl ] [ text <| job.jobTitle ] ]
+            [ a [ target "_blank", href job.jobUrl ] [ text <| job.jobTitle ] ]
       , div [ class "org" ]
-            [ a [ href job.organisationUrl ] [ text job.organisationName ] ]
+            [ a [ target "_blank", href job.organisationUrl ] [ text job.organisationName ] ]
       , div [ class "location" ]
             [ small [ ] [ text job.location ] ]
       , div [ class "tags" ]
@@ -207,5 +207,5 @@ renderJob job =
 renderTag : String -> Html msg
 renderTag t =
   span [ class "tag" ]
-       [ a [ href <| "jobs/list?tag=" ++ t ] [ text t ]
+       [ a [ target "_blank", href <| "jobs/list?tag=" ++ t ] [ text t ]
        ]
