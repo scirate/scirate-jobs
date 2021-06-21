@@ -45,6 +45,7 @@ sources:
         - jobTitle
         - jobUrl
         - location
+        - modified
         - organisationName
         - organisationUrl
         - remote
@@ -95,7 +96,9 @@ sources:
         - tags
         - token
         - withdrawn
-        filter: {}
+        filter:
+          token:
+            _eq: x-hasura-job-token
     - role: ruby
       permission:
         columns:
@@ -103,7 +106,6 @@ sources:
         - contactName
         - emailedConfirmation
         - id
-        - token
         filter: {}
     update_permissions:
     - role: editor
@@ -128,8 +130,6 @@ sources:
         check:
           approved:
             _eq: false
-        set:
-          modified: x-hasura-job-date-modified
     - role: ruby
       permission:
         columns:
