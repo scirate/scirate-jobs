@@ -155,7 +155,6 @@ update msg model =
                     gen   = choices 5 jobs_
                  in Cmd.batch [ generate SetVisibleJobs gen ]
 
-              -- Err e -> Debug.log ("API Error: " ++ Debug.toString e) Cmd.none
               Err e -> Cmd.none
         in
           ( model, cmd )
@@ -170,10 +169,10 @@ jobSidebar : List JobItem -> Html Msg
 jobSidebar jobs = 
     div [ class "job-sidebar" ]
         [ h3 []
-             [ a [ href "/jobs/list" ] [ text "Open positions" ] 
+             [ a [ href "/jobs" ] [ text "Open positions" ]
              , text " "
              , span [ class "beta" ]
-                    [ a [ href "https://github.com/scirate/scirate/wiki/2021-06-Jobs-Feature-Beta" ]
+                    [ a [ href "/jobs/about" ]
                         [ text "beta" ]
                     ]
              ]
@@ -207,5 +206,5 @@ renderJob job =
 renderTag : String -> Html msg
 renderTag t =
   span [ class "tag" ]
-       [ a [ target "_blank", href <| "jobs/list?tag=" ++ t ] [ text t ]
+       [ a [ target "_blank", href <| "/jobs?tag=" ++ t ] [ text t ]
        ]
