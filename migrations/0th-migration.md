@@ -22,10 +22,19 @@ psql> create role jobs_user with password '...';
 > createdb scirate_jobs_live -O jobs_user
 ```
 
-2. Install `pgcrypto` extension:
+3. Install `pgcrypto` extension:
 
 ```
 > create extension pgcrypto;
 ```
 
 Then restart postgres.
+
+3. Hasura migrations
+
+Run Hasura, and then:
+
+```
+hasura migrate apply
+hasura metadata apply
+```
