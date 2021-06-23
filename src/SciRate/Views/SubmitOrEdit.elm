@@ -281,21 +281,29 @@ jobEntryFields m =
      ]
 
 contactDetails : Model -> Html Msg
-contactDetails m
-  = div [ class "job-form-fields" ]
+contactDetails m =
+  let
+      maybeEmail =
+        if not m.editMode
+        then
+          [ textField
+              "Contact email"
+              "Your contact email. You will receive a link to edit to this address. This will not be shown to anyone."
+              ""
+              m.job.contactEmail
+              UpdateContactEmail
+          ]
+        else []
+  in
+  div [ class "job-form-fields" ]
+        (maybeEmail ++
         [ textField
-            "Contact email" 
-            "Your contact email. You will receive a link to edit to this address. This will not be shown to anyone."
-            ""
-            m.job.contactEmail
-            UpdateContactEmail
-        , textField
             "Contact Name" 
             "Your contact name. Used only if we need to get in touch we you."
             ""
             m.job.contactName
             UpdateContactName
-        ]
+        ])
 
 positionDetails : Model -> Html Msg
 positionDetails m = 
