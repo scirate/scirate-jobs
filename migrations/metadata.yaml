@@ -106,6 +106,7 @@ sources:
         - contactName
         - emailedConfirmation
         - id
+        - token
         filter: {}
     update_permissions:
     - role: editor
@@ -134,9 +135,7 @@ sources:
       permission:
         columns:
         - emailedConfirmation
-        filter:
-          token:
-            _eq: x-hasura-job-token
+        filter: {}
         check: null
   configuration:
     connection_info:
