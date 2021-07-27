@@ -16,7 +16,9 @@ parseQueryString s =
       mkTuple two = 
         let a = List.head two
             b = List.head (List.drop 1 two)
-        in (Maybe.withDefault "" a, Maybe.withDefault "" b)
+        in (Maybe.withDefault "" a,
+            Maybe.withDefault "" (Url.percentDecode (Maybe.withDefault "" b))
+           )
       dict = List.map mkTuple eqs
   in
       Dict.fromList dict
