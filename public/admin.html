@@ -7,14 +7,14 @@
 <script type="text/javascript">
   const initData = 
     { "queryString": document.location.href
-    , "jwtToken": "eyJhbGciOiJIUzI1NiJ9.eyJhZG1pbiI6ZmFsc2UsImV4cCI6MTYyMjc1Nzg0OSwiaHR0cHM6Ly9oYXN1cmEuaW8vand0L2NsYWltcyI6eyJ4LWhhc3VyYS1hbGxvd2VkLXJvbGVzIjpbInB1YmxpYyJdLCJ4LWhhc3VyYS1kZWZhdWx0LXJvbGUiOiJwdWJsaWMifX0.Tsn4NLh2KcYH2GIpODHin8xW6PBbSlSfn5EJD7Xt7W8"
+    , "jwtToken": "eyJhbGciOiJIUzI1NiJ9.eyJhZG1pbiI6ZmFsc2UsImV4cCI6MTkzMjU4NjMwNSwiaHR0cHM6Ly9oYXN1cmEuaW8vand0L2NsYWltcyI6eyJ4LWhhc3VyYS1hbGxvd2VkLXJvbGVzIjpbImpvYl9hZG1pbiJdLCJ4LWhhc3VyYS1kZWZhdWx0LXJvbGUiOiJqb2JfYWRtaW4iLCJ4LWhhc3VyYS1qb2ItdG9rZW4iOiIiLCJ4LWhhc3VyYS1qb2ItZGF0ZS1tb2RpZmllZCI6IjIwMjEtMDktMjUgMTc6MTE6NDUgKzAxMDAifX0.j-PDgaqyUxBfprSD6nGP2QtVOKfozdHNuWpu3IdA5BU"
     , "graphqlUrl": "http://localhost:8080/v1/graphql"
     };
 
   console.log(initData);
 
   Elm.SciRate.Views.Admin.init(
-    { node: document.getElementById("job-sidebar") 
+    { node: document.getElementById("admin") 
     , flags: initData
     });
 </script>
